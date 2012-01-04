@@ -1,7 +1,7 @@
 filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
-
+call pathogen#helptags()
 set nocompatible
 set modelines=0
 
@@ -27,8 +27,16 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-"set relativenumber
+set number
+"back up
+set backup
 set undofile
+set undolevels=1000
+set undoreload=10000
+"Save and load view state
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
+
 "Remap Leader key
 let mapleader=","
 
@@ -73,3 +81,41 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+"Yank to the end of line
+nnoremap Y y$
+function! InitializeDirectories()
+    let separator = "."
+    let parent = $HOME
+    let prefix = ".vim"
+    let dir_list = {'backup': 'backupdir', 'views': 'viewdir', 'swap': 'directory', 'undo': 'undodir'}
+    for [dirname, settingname] in items(dir_list)
+        let directory = parent . '/' . prefix . dirname . '/'
+        if exists("*mkdir")
+            if !isdirectory(directory)
+                call mkdir(directory)
+            endif
+        endif
+        if !isdirectory(directory)
+            echo "Unable to create backup directory" . directory
+        else
+            exec "set " . settingname . "=" . directory
+        endif
+    endfor
+endfunction
+call InitializeDirectories()
+"NERDTree
+map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+map <leader>e :NERDTreeFind<CR>
+
+"Delimitmate 
+au FileType * let b:delimitMate_autoclose = 1
+
+"Enable mouse usage
+set mouse=a
+"Ack
+nnoremap <leader>a :Ack
+"Folding
+nnoremap <leader>ft Vatzf
+"Command-T
+let g:CommandTSearchPath = $HOME 
