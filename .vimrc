@@ -9,7 +9,10 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-
+"color
+syntax enable
+set background=light
+colorscheme molokai
 set encoding=utf-8
 set scrolloff=3
 set autoindent
