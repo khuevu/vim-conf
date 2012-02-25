@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule ".vim/bundle/NerdCommenter"]
+	path = .vim/bundle/NerdCommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
