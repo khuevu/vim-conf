@@ -12,7 +12,9 @@ set expandtab
 "color
 syntax enable
 set background=light
-colorscheme molokai
+
+set term=xterm-256color 
+colorscheme wombat256mod
 set encoding=utf-8
 set scrolloff=3
 set autoindent
@@ -84,30 +86,29 @@ nnoremap <C-l> <C-w>l
 
 "Yank to the end of line
 nnoremap Y y$
-function! InitializeDirectories()
-    let separator = "."
-    let parent = $HOME
-    let prefix = ".vim"
-    let dir_list = {'backup': 'backupdir', 'views': 'viewdir', 'swap': 'directory', 'undo': 'undodir'}
-    for [dirname, settingname] in items(dir_list)
-        let directory = parent . '/' . prefix . dirname . '/'
-        if exists("*mkdir")
-            if !isdirectory(directory)
-                call mkdir(directory)
-            endif
-        endif
-        if !isdirectory(directory)
-            echo "Unable to create backup directory" . directory
-        else
-            exec "set " . settingname . "=" . directory
-        endif
-    endfor
-endfunction
-call InitializeDirectories()
-"NERDTree
+"function! InitializeDirectories()
+    "let separator = "."
+    "let parent = $HOME
+    "let prefix = ".vim"
+    "let dir_list = {'backup': 'backupdir', 'views': 'viewdir', 'swap': 'directory', 'undo': 'undodir'}
+    "for [dirname, settingname] in items(dir_list)
+        "let directory = parent . '/' . prefix . dirname . '/'
+        "if exists("*mkdir")
+            "if !isdirectory(directory)
+                "call mkdir(directory)
+            "endif
+        "endif
+        "if !isdirectory(directory)
+            "echo "Unable to create backup directory" . directory
+        "else
+            "exec "set " . settingname . "=" . directory
+        "endif
+    "endfor
+"endfunction
+"call InitializeDirectories()
+""NERDTree
 map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
-
 "Delimitmate 
 au FileType * let b:delimitMate_autoclose = 1
 
@@ -119,3 +120,9 @@ nnoremap <leader>a :Ack
 nnoremap <leader>ft Vatzf
 "Command-T
 let g:CommandTSearchPath = $HOME 
+"Tab
+nnoremap <leader>n :tabn<Cr>
+nnoremap <leader>b :tabp<Cr>
+
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
