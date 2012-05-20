@@ -126,3 +126,5 @@ nnoremap <leader>b :tabp<Cr>
 
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
+"TagBar Plugin
+nmap <F8> :TagbarToggle<CR>
