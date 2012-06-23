@@ -128,3 +128,13 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
 "TagBar Plugin
 nmap <F8> :TagbarToggle<CR>
+
+"Enable Autocompletion based on file type
+set ofu=syntaxcomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#Complete
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+"JSHint 
+let jshint_hightligh_color = 'DarkGray'
