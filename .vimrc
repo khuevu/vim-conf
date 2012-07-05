@@ -5,10 +5,10 @@ call pathogen#helptags()
 set nocompatible
 set modelines=0
 
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab
 "color
 syntax enable
 set background=light
@@ -65,12 +65,12 @@ set formatoptions=qrn1
 "get rid of the arrow key
 nnoremap <up> <nop>
 nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+nnoremap <left> :tabnext<cr>
+nnoremap <right> :tabprevious<cr>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 nnoremap ; :
@@ -138,3 +138,4 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "JSHint 
 let jshint_hightligh_color = 'DarkGray'
+let disable_lint = 1
