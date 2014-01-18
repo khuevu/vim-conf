@@ -4,24 +4,12 @@
 [submodule "vim.symlink/bundle/nerdtree"]
 	path = vim.symlink/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim.symlink/bundle/yankring"]
-	path = vim.symlink/bundle/yankring
-	url = https://github.com/chrismetcalf/vim-yankring.git
 [submodule "vim.symlink/bundle/ack"]
 	path = vim.symlink/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "vim.symlink/bundle/delimitMate"]
-	path = vim.symlink/bundle/delimitMate
-	url = https://github.com/Raimondi/delimitMate.git
 [submodule "vim.symlink/bundle/nerdcommenter"]
 	path = vim.symlink/bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "vim.symlink/bundle/NerdCommenter"]
-	path = vim.symlink/bundle/NerdCommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "vim.symlink/bundle/tagbar"]
 	path = vim.symlink/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule "vim.symlink/bundle/lint"]
-	path = vim.symlink/bundle/lint
-	url = git@github.com:joestelmach/lint.vim.git
