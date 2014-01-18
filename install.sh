@@ -4,7 +4,8 @@
 #ln -vs ~/devtools/vim-conf/.vim ~/.vim
 
 VIM_CONF_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd $VIM_CONF_DIR
+echo $VIM_CONF_DIR
+cd $VIM_CONF_DIR/vim.symlink/bundle/command-t
 rake make
 
 
