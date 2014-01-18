@@ -1,27 +1,27 @@
-[submodule ".vim/bundle/command-t"]
-	path = .vim/bundle/command-t
+[submodule "vim.symlink/bundle/command-t"]
+	path = vim.symlink/bundle/command-t
 	url = git://git.wincent.com/command-t.git
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
+[submodule "vim.symlink/bundle/nerdtree"]
+	path = vim.symlink/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/yankring"]
-	path = .vim/bundle/yankring
+[submodule "vim.symlink/bundle/yankring"]
+	path = vim.symlink/bundle/yankring
 	url = https://github.com/chrismetcalf/vim-yankring.git
-[submodule ".vim/bundle/ack"]
-	path = .vim/bundle/ack
+[submodule "vim.symlink/bundle/ack"]
+	path = vim.symlink/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
-[submodule ".vim/bundle/delimitMate"]
-	path = .vim/bundle/delimitMate
+[submodule "vim.symlink/bundle/delimitMate"]
+	path = vim.symlink/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
-[submodule ".vim/bundle/nerdcommenter"]
-	path = .vim/bundle/nerdcommenter
+[submodule "vim.symlink/bundle/nerdcommenter"]
+	path = vim.symlink/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule ".vim/bundle/NerdCommenter"]
-	path = .vim/bundle/NerdCommenter
+[submodule "vim.symlink/bundle/NerdCommenter"]
+	path = vim.symlink/bundle/NerdCommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule ".vim/bundle/tagbar"]
-	path = .vim/bundle/tagbar
+[submodule "vim.symlink/bundle/tagbar"]
+	path = vim.symlink/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule ".vim/bundle/lint"]
-	path = .vim/bundle/lint
+[submodule "vim.symlink/bundle/lint"]
+	path = vim.symlink/bundle/lint
 	url = git@github.com:joestelmach/lint.vim.git
