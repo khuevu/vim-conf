@@ -1,2 +1,4 @@
 .vim/eclim/
-.vim/view/
+*/view/
+*~
+*netrwhis*
