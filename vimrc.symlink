@@ -139,3 +139,6 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 "JSHint 
 let jshint_hightligh_color = 'DarkGray'
 let disable_lint = 1
+
+"Copy to system clipboard, require ":echo has('clipboard')" doesn't return 0
+vnoremap <D-c> "*y
