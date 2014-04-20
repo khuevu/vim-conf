@@ -142,3 +142,6 @@ let disable_lint = 1
 
 "Copy to system clipboard, require ":echo has('clipboard')" doesn't return 0
 vnoremap <D-c> "*y
+
+"Save all backup files (*.~) to a central location: 
+set backupdir=~/tmp/vimbackupfiles
