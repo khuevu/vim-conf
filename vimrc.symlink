@@ -87,26 +87,7 @@ nnoremap <C-l> <C-w>l
 
 "Yank to the end of line
 nnoremap Y y$
-"function! InitializeDirectories()
-    "let separator = "."
-    "let parent = $HOME
-    "let prefix = ".vim"
-    "let dir_list = {'backup': 'backupdir', 'views': 'viewdir', 'swap': 'directory', 'undo': 'undodir'}
-    "for [dirname, settingname] in items(dir_list)
-        "let directory = parent . '/' . prefix . dirname . '/'
-        "if exists("*mkdir")
-            "if !isdirectory(directory)
-                "call mkdir(directory)
-            "endif
-        "endif
-        "if !isdirectory(directory)
-            "echo "Unable to create backup directory" . directory
-        "else
-            "exec "set " . settingname . "=" . directory
-        "endif
-    "endfor
-"endfunction
-"call InitializeDirectories()
+
 ""NERDTree
 map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
@@ -141,8 +122,18 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 let jshint_hightligh_color = 'DarkGray'
 let disable_lint = 1
 
-"Copy to system clipboard, require ":echo has('clipboard')" doesn't return 0
-vnoremap <D-c> "*y
+"For Copy and Paste. 
+"Copy to system clipboard, require \":echo has('clipboard')\" doesn't return 0
+"vnoremap <D-c> "*y
+"For macVim and gvim, or vim terminal version >= 7.3, make yy, D, P work with
+"clipboard
+set clipboard=unnamed
+"use pbcopy, pbpaste to work with clipboard. Below command seem only work if
+"there is space after :w. Don't use <D- as it mapped to iterm edit menu 
+vnoremap <leader>c :w !pbcopy<CR><CR>
+vnoremap <leader>x :!pbcopy<CR>
+nnoremap <leader>v :r!pbpaste<CR>
+
 
 "Save all backup files (*.~) to a central location: 
 set backupdir=~/tmp/vimbackupfiles
