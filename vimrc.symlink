@@ -130,9 +130,11 @@ let disable_lint = 1
 set clipboard=unnamed
 "use pbcopy, pbpaste to work with clipboard. Below command seem only work if
 "there is space after :w. Don't use <D- as it mapped to iterm edit menu 
-vnoremap <leader>c :w !pbcopy<CR><CR>
-vnoremap <leader>x :!pbcopy<CR>
-nnoremap <leader>v :r!pbpaste<CR>
+"vmap <leader>c :w !pbcopy<CR><CR> or vmap <leader>x :!pbcopy<CR> (This doesn't work well as it copy the whole
+"lines of selected text)
+vmap <leader>c y:e /tmp/clipboard.tmp<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
+vmap <leader>x d:e /tmp/clipboard.tmp<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
+nmap <leader>v :r !pbpaste<CR>
 
 
 "Save all backup files (*.~) to a central location: 
