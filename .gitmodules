@@ -10,3 +10,6 @@
 [submodule "vim.symlink/bundle/tagbar"]
 	path = vim.symlink/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
+[submodule "vim.symlink/bundle/jsbeautify"]
+	path = vim.symlink/bundle/jsbeautify
+	url = https://github.com/maksimr/vim-jsbeautify.git

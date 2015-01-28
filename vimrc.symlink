@@ -139,3 +139,5 @@ nmap <leader>v :r !pbpaste<CR>
 
 "Save all backup files (*.~) to a central location: 
 set backupdir=~/tmp/vimbackupfiles
+
+"js beautify
