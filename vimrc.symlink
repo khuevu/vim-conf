@@ -1,15 +1,22 @@
+set nocompatible
 filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+call vundle#end()            " required
+filetype plugin indent on    " required
 call pathogen#runtime_append_all_bundles()
-filetype plugin indent on
 filetype plugin on
 call pathogen#helptags()
 set nocompatible
 set modelines=0
 
 set expandtab
-set tabstop=4
+set tabstop=8
 set shiftwidth=4
-set softtabstop=4
+set softtabstop=0
+set smarttab
 "color
 syntax enable
 set background=light
@@ -41,7 +48,7 @@ au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
 "Remap Leader key
-let mapleader=","
+let mapleader="\<space>"
 
 "Search behavior
 nnoremap / /\v
@@ -101,7 +108,7 @@ nnoremap <leader>a :Ack
 "Folding
 nnoremap <leader>ft Vatzf
 "Command-T
-let g:CommandTSearchPath = $HOME 
+"let g:CommandTSearchPath = $HOME 
 "Tab
 nnoremap <leader>n :tabn<Cr>
 nnoremap <leader>b :tabp<Cr>
@@ -112,11 +119,11 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nmap <F8> :TagbarToggle<CR>
 
 "Enable Autocompletion based on file type
-set ofu=syntaxcomplete#Complete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#Complete
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+"set ofu=syntaxcomplete#Complete
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType javascript set omnifunc=javascriptcomplete#Complete
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "JSHint 
 let jshint_hightligh_color = 'DarkGray'

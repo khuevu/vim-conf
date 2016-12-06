@@ -13,3 +13,6 @@
 [submodule "vim.symlink/bundle/jsbeautify"]
 	path = vim.symlink/bundle/jsbeautify
 	url = https://github.com/maksimr/vim-jsbeautify.git
+[submodule "vim.symlink/bundle/vim-scala"]
+	path = vim.symlink/bundle/vim-scala
+	url = https://github.com/derekwyatt/vim-scala.git
