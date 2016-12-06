@@ -5,13 +5,13 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 call vundle#end()            " required
-filetype plugin indent on    " required
 call pathogen#runtime_append_all_bundles()
-filetype plugin on
 call pathogen#helptags()
-set nocompatible
-set modelines=0
 
+filetype plugin indent on    " required
+filetype plugin on
+
+set modelines=0
 set expandtab
 set tabstop=8
 set shiftwidth=4
@@ -29,8 +29,8 @@ set autoindent
 set showmode
 set showcmd
 set hidden
-set wildmenu
-set wildmode=list:longest
+"set wildmenu
+"set wildmode=list:longest
 set visualbell
 "set cursorline
 set ttyfast
@@ -38,14 +38,7 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set number
-"back up
-set backup
-set undofile
-set undolevels=1000
-set undoreload=10000
-"Save and load view state
-au BufWinLeave * silent! mkview
-au BufWinEnter * silent! loadview
+
 
 "Remap Leader key
 let mapleader="\<space>"
@@ -60,21 +53,19 @@ set gdefault
 set incsearch
 set showmatch
 set hlsearch
-"Clear search
-nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
 "Handle long line
 set wrap
 set textwidth=79
 set formatoptions=qrn1
 "set colorcolumn=85
 
+nnoremap <leader>h :tabnext<cr>
+nnoremap <leader>l :tabprevious<cr>
 "get rid of the arrow key
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> :tabnext<cr>
-nnoremap <right> :tabprevious<cr>
+nnoremap <up> <C-w>k
+nnoremap <down> <C-w>j
+nnoremap <left> <C-w>h
+nnoremap <right> <C-w>l
 "inoremap <up> <nop>
 "inoremap <down> <nop>
 "inoremap <left> <nop>
@@ -82,7 +73,7 @@ nnoremap <right> :tabprevious<cr>
 nnoremap j gj
 nnoremap k gk
 nnoremap ; :
-au FocusLost * :wa
+"au FocusLost * :wa
 "QUick esc
 inoremap jj <ESC>
 "Split vertical window
@@ -110,20 +101,11 @@ nnoremap <leader>ft Vatzf
 "Command-T
 "let g:CommandTSearchPath = $HOME 
 "Tab
-nnoremap <leader>n :tabn<Cr>
-nnoremap <leader>b :tabp<Cr>
-
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>h :tabn<Cr>
+nnoremap <leader>l :tabp<Cr>
 
 "TagBar Plugin
 nmap <F8> :TagbarToggle<CR>
-
-"Enable Autocompletion based on file type
-"set ofu=syntaxcomplete#Complete
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#Complete
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "JSHint 
 let jshint_hightligh_color = 'DarkGray'
@@ -134,17 +116,36 @@ let disable_lint = 1
 "vnoremap <D-c> "*y
 "For macVim and gvim, or vim terminal version >= 7.3, make yy, D, P work with
 "clipboard
-set clipboard=unnamed
+"set clipboard=unnamed
 "use pbcopy, pbpaste to work with clipboard. Below command seem only work if
 "there is space after :w. Don't use <D- as it mapped to iterm edit menu 
 "vmap <leader>c :w !pbcopy<CR><CR> or vmap <leader>x :!pbcopy<CR> (This doesn't work well as it copy the whole
 "lines of selected text)
-vmap <leader>c y:e /tmp/clipboard.tmp<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
-vmap <leader>x d:e /tmp/clipboard.tmp<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
-nmap <leader>v :r !pbpaste<CR>
+"vmap <leader>c y:e /tmp/clipboard.tmp<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
+"vmap <leader>x d:e /tmp/clipboard.tmp<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
+"nmap <leader>v :r !pbpaste<CR>
+"back up
+"set backup
+"set undofile
+"set undolevels=1000
+"set undoreload=10000
+"Save and load view state
+"au BufWinLeave * silent! mkview
+"au BufWinEnter * silent! loadview
 
+"Clear search
+"nnoremap <leader><space> :noh<cr>
+"nnoremap <tab> %
+"vnoremap <tab> %
 
 "Save all backup files (*.~) to a central location: 
-set backupdir=~/tmp/vimbackupfiles
+"set backupdir=~/tmp/vimbackupfiles
+"
+"Enable Autocompletion based on file type
+"set ofu=syntaxcomplete#Complete
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType javascript set omnifunc=javascriptcomplete#Complete
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 "js beautify
