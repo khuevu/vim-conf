@@ -12,11 +12,17 @@ filetype plugin indent on    " required
 filetype plugin on
 
 set modelines=0
+
+"
+" Tab and identation
+"
 set expandtab
-set tabstop=8
+set autoindent
+set backspace=indent,eol,start
 set shiftwidth=4
-set softtabstop=0
-set smarttab
+set softtabstop=4
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+
 "color
 syntax enable
 set background=light
@@ -25,17 +31,13 @@ set term=xterm-256color
 colorscheme wombat256mod
 set encoding=utf-8
 set scrolloff=3
-set autoindent
 set showmode
 set showcmd
 set hidden
-"set wildmenu
-"set wildmode=list:longest
 set visualbell
-"set cursorline
 set ttyfast
+set lazyredraw
 set ruler
-set backspace=indent,eol,start
 set laststatus=2
 set number
 
@@ -43,7 +45,9 @@ set number
 "Remap Leader key
 let mapleader="\<space>"
 
+"
 "Search behavior
+"
 nnoremap / /\v
 vnoremap / /\v
 set ignorecase
@@ -55,36 +59,31 @@ set showmatch
 set hlsearch
 "Handle long line
 set wrap
-set textwidth=79
 set formatoptions=qrn1
 "set colorcolumn=85
 
 nnoremap <leader>h :tabnext<cr>
 nnoremap <leader>l :tabprevious<cr>
+"configure buffer
+" allow buffer to be hidden after modified
+set hidden
+nnoremap <leader>, :bnext<cr>
+nnoremap <leader>. :bprevious<cr>
+nnoremap <leader>bq :bp <bar> bd # <cr>
+nnoremap <leader>bl :ls<cr>
+
 "get rid of the arrow key
 nnoremap <up> <C-w>k
 nnoremap <down> <C-w>j
 nnoremap <left> <C-w>h
 nnoremap <right> <C-w>l
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
-nnoremap ; :
-"au FocusLost * :wa
-"QUick esc
 inoremap jj <ESC>
-"Split vertical window
-nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+inoremap kk <ESC>
 
-"Yank to the end of line
-nnoremap Y y$
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
 
 ""NERDTree
 map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
@@ -101,8 +100,8 @@ nnoremap <leader>ft Vatzf
 "Command-T
 "let g:CommandTSearchPath = $HOME 
 "Tab
-nnoremap <leader>h :tabn<Cr>
-nnoremap <leader>l :tabp<Cr>
+nnoremap <leader>h :tabp<Cr>
+nnoremap <leader>l :tabn<Cr>
 
 "TagBar Plugin
 nmap <F8> :TagbarToggle<CR>
@@ -111,41 +110,47 @@ nmap <F8> :TagbarToggle<CR>
 let jshint_hightligh_color = 'DarkGray'
 let disable_lint = 1
 
-"For Copy and Paste. 
-"Copy to system clipboard, require \":echo has('clipboard')\" doesn't return 0
-"vnoremap <D-c> "*y
-"For macVim and gvim, or vim terminal version >= 7.3, make yy, D, P work with
-"clipboard
-"set clipboard=unnamed
-"use pbcopy, pbpaste to work with clipboard. Below command seem only work if
-"there is space after :w. Don't use <D- as it mapped to iterm edit menu 
-"vmap <leader>c :w !pbcopy<CR><CR> or vmap <leader>x :!pbcopy<CR> (This doesn't work well as it copy the whole
-"lines of selected text)
-"vmap <leader>c y:e /tmp/clipboard.tmp<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
-"vmap <leader>x d:e /tmp/clipboard.tmp<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
-"nmap <leader>v :r !pbpaste<CR>
-"back up
-"set backup
-"set undofile
-"set undolevels=1000
-"set undoreload=10000
-"Save and load view state
-"au BufWinLeave * silent! mkview
-"au BufWinEnter * silent! loadview
+"NerdCommenter
+nnoremap <leader>c :call NERDComment(0,"toggle")<CR>
+vnoremap <leader>c :call NERDComment(0,"toggle")<CR>
 
-"Clear search
-"nnoremap <leader><space> :noh<cr>
-"nnoremap <tab> %
-"vnoremap <tab> %
+"YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'  
+let g:ycm_disable_for_files_larger_than_kb = 1000
 
-"Save all backup files (*.~) to a central location: 
-"set backupdir=~/tmp/vimbackupfiles
-"
-"Enable Autocompletion based on file type
-"set ofu=syntaxcomplete#Complete
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#Complete
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
+"Copy to clipboard
+set clipboard=unnamed
+
+"airline tabline configuration
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+"YcmCompleter configuration
+nnoremap <leader>g :YcmCompleter GoTo<cr>
+nnoremap <leader>gd :YcmCompleter GetDoc<cr>
+nnoremap <leader>gt :YcmCompleter GetType<cr>
+
+"CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+" Ignore some folders and files for CtrlP indexing
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+set wildignore+=*/tmp/*                                     " ctrlp - ignore files in tmp directories
+set wildignore+=*/target/*                                  " ctrlp - ignore files in target directories
+set wildignore+=*/build/*                                   " ctrlp - ignore gradle build directories
+set wildignore+=*.so                                        " ctrlp - ignore .so files
+set wildignore+=*.o                                         " ctrlp - ignore .o files
+set wildignore+=*.class                                     " ctrlp - ignore .class files
+set wildignore+=*.swp                                       " ctrlp - ignore .swp files
+set wildignore+=*.zip                                       " ctrlp - ignore .zip files
+set wildignore+=*.pdf                                       " ctrlp - ignore .pdf files
+set wildignore+=*/node_modules/*                            " ctrlp - ignore node modules
+set wildignore+=*/bower_components/*                        " ctrlp - ignore bower components
+set wildignore+=*/dist/*                                    " ctrlp - ignore grunt b
 "js beautify
